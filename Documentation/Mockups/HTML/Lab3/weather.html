@@ -1,0 +1,56 @@
+<html lang="" data-ng-app="GoogleDirection">
+    
+<head>
+  <meta t="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LetsChat</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+  <link rel="stylesheet" href="css/main.css">  
+    
+    <style>
+     #map-canvas {
+    width: 1350px;
+    height: 2000px;
+}
+    </style>
+</head>
+
+<body>
+<style>
+body {
+    background-image: url("Direction.jpg");
+}
+</style>
+    
+    <div  ng-app="weather" ng-controller="weatherctrl">
+<button id="btn" ng-click="getWeather()"> Show Weather </button><br/><br/>
+<div class="weatherModule">
+<p class="currentConditions" ng-bind-html-unsafe="weather.html"></p>
+<div class="currentIcon" ng-bind-html-unsafe="currentIcon.html"></div>
+</div>
+</div>
+    
+    
+    
+    </body>
+</html>
+<script>
+angular.module('weather', [])
+.controller('weatherctrl', function ($scope, $http) {
+
+$scope.getWeather = function() {
+$http.get(   'http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/Kansas%20City.json').success(function(data) {
+      console.log(data);
+          temp = data.current_observation.temp_f;
+                icon = data.current_observation.icon_url;
+                weather = data.current_observation.weather;
+             console.log(temp);
+                $scope.currentweather = {html:"Currently " +temp +" &deg; F and " + weather + ""}
+                $scope.currentIcon=  {html:"<img src='" + icon  +"'/>"}
+                     
+})
+}
+    
+});          
+</script>
