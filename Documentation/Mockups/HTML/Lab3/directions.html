@@ -8,22 +8,30 @@
   <title>LetsChat</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
-  <link rel="stylesheet" href="css/main.css">  
+  <link rel="stylesheet" href="css/mystyle.css">  
     
     <style>
-     #map-canvas {
+     .map-canvas {
     width: 1350px;
     height: 2000px;
 }
+        .weatherModule {
+    background:#f2f2f2;
+    height:150px;
+    width:250px;
+    border: 1px dashed #ccc;
+    padding: 1em;
+}
+        
+body {
+    background-image: url("1.jpg");
+}
+
     </style>
+    
 </head>
 
 <body>
-<style>
-body {
-    background-image: url("Direction.jpg");
-}
-</style>
 <div class="wrapp" ng-controller="googlemapoutput">
          <div class="row">
              
@@ -36,17 +44,20 @@ body {
                  <br/>
     <hr>
             </div>
-            <div id="map-canvas" style="height: 480px;"></div>
+    <div id="map-canvas" style="height: 380px;"></div><br>
     
-        </div><br>
-    <div align="center"><input type="button" class="submit-button"  type="submit" value="Show Weather   " onclick="window.location.href ='weather.html'"/></div>
+    <button id="btn" ng-click="getWeather()"> Show Weather </button>
+    <p id ="p1"></p>
+    <p id ="p2"></p>
+    
+        </div><br>    
     </body>
 </html>
 
 
 <script>
 angular.module('GoogleDirection', [])
-.controller('googlemapoutput', function ($scope) {
+.controller('googlemapoutput', function ($scope,$http) {
 
     var map;
     var mapOptions;
@@ -65,6 +76,19 @@ angular.module('GoogleDirection', [])
             map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
      };
+    $scope.getWeather = function() {
+var start = document.getElementById('startlocation').value;
+    $http.get(   'http://api.openweathermap.org/data/2.5/weather?q='+start).success(function(data) {
+        document.getElementById("p1").innerHTML = "Temperature at "+start+" is" +(data.main.temp-274)+" c";
+        //alert(parseInt(data.main.temp-274)+'c');
+    });
+        var end = document.getElementById('endlocation').value;
+           $http.get(   'http://api.openweathermap.org/data/2.5/weather?q='+end).success(function(data) {
+               document.getElementById("p2").innerHTML = "Temperature at "+end+" is" +(data.main.temp-274)+" c";
+               //alert(parseInt(data.main.temp-274)+'c');
+    });         
+}
+
     $scope.calcRoute = function () {
        var end = document.getElementById('endlocation').value;
             var start = document.getElementById('startlocation').value;
@@ -88,5 +112,13 @@ angular.module('GoogleDirection', [])
     google.maps.event.addDomListener(window, 'load', $scope.initialize);
 
 });
+    
+    
+    
+geolocation.controller('weatherctrl', function ($scope, $http) {
+
+
+    
+});        
            
 </script>
