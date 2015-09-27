@@ -32,6 +32,7 @@ body {
 </head>
 
 <body>
+    
 <div class="wrapp" ng-controller="googlemapoutput">
          <div class="row">
              
@@ -79,12 +80,12 @@ angular.module('GoogleDirection', [])
     $scope.getWeather = function() {
 var start = document.getElementById('startlocation').value;
     $http.get(   'http://api.openweathermap.org/data/2.5/weather?q='+start).success(function(data) {
-        document.getElementById("p1").innerHTML = "Temperature at "+start+" is" +(data.main.temp-274)+" c";
+        document.getElementById("p1").innerHTML = "Temperature at "+start+" is " +(data.main.temp-274)+" c";
         //alert(parseInt(data.main.temp-274)+'c');
     });
         var end = document.getElementById('endlocation').value;
            $http.get(   'http://api.openweathermap.org/data/2.5/weather?q='+end).success(function(data) {
-               document.getElementById("p2").innerHTML = "Temperature at "+end+" is" +(data.main.temp-274)+" c";
+               document.getElementById("p2").innerHTML = "Temperature at "+end+" is " +(data.main.temp-274)+" c";
                //alert(parseInt(data.main.temp-274)+'c');
     });         
 }

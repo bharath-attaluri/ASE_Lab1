@@ -10,6 +10,17 @@
         
         <title>LetsChat</title>
         
+        
+        <script type='text/javascript'>
+    function PersonController($scope) {
+        $scope.logins = [];
+        $scope.login = function (user, password) {
+            localStorage.setItem("name" , user);
+        };
+    }
+
+    </script>
+        
     </head>
     <body>        
         
@@ -20,15 +31,14 @@
         <div ng-controller="PersonController" data-ng-init="course='ASE CS5551'">
         <p><input type="text" name="UserName" id="UserName" data-ng-model="user.name" placeholder="username"/><br/><br/>
            <input type="password" name="password" id="lastName" data-ng-model="user.password" placeholder="password"/></p><br/>   
-            <h3><i> <p><font color="green">Hello {{user.name}}</font></p> </i></h3>
     </div>
         
 <div class="submit-container">
-<div align="center"><input type="button" class="submit-button"  type="submit" value="Login   " onclick="window.location.href ='directions.html'"/></div><hr>
+<div align="center"><input type="button" ng-click="login(user.name, user.password)" class="submit-button"  type="submit" value="Login   " onclick="window.location.href ='home4.html'"/></div><hr>
 </div>
 
 <div class="submit-container">
-<div align="center"><input type="button" class="submit-button" type="submit" value="Register" onclick="window.location.href ='register.html'"/><hr></div>
+<div align="center"><input type="button" class="submit-button" type="submit" value="Register" onclick="window.location.href ='register4.html'"/><hr></div>
 </div>
         
 
