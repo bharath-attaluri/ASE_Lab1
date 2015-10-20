@@ -1,0 +1,110 @@
+<html data-ng-app="myApp">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>  
+  <script src="js/app.js"></script>
+  <title>Login Form</title>
+  
+<style>
+ body {
+  font: 13px/20px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+  color: #404040;
+  background: #0ca3d2;
+}
+h1   {color:red}
+p    {color:green}
+.container {
+  margin: 80px auto;
+  width: 640px;
+}
+.login {
+  position: left;
+  margin:  auto;
+  padding: 20px 20px 20px;
+  width: 310px;
+  background: #0ca3d2;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-help {
+  margin: 20px 0;
+  font-size: 11px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px #2a85a1;
+}
+.login-help a {
+  color: #cce7fa;
+  text-decoration: none;
+}
+.login:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+.login h1 {
+  margin: -20px -20px 21px;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  text-shadow: 0 1px black;
+  background: #0ca3d2;
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 3px 3px 0 0;
+  background-image: -webkit-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: -moz-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: -o-linear-gradient(top, whiteffd, #eef2f5);
+  background-image: linear-gradient(to bottom, whiteffd, #eef2f5);
+  -webkit-box-shadow: 0 1px whitesmoke;
+  box-shadow: 0 1px whitesmoke;
+}
+
+.login p.submit {
+  text-align: right;
+}
+.login p.link {text-align: right;}
+</style>
+
+</head>
+<body>
+  <section class="container">
+    <div class="login" ng-controller="RegisterController">
+      <h1>Plan B</h1>
+      
+<form>
+<table>
+  <tr>
+    <td>User Name</td>
+    <td><input type="text" name="userName" id="userName" data-ng-model="userName"/></td>
+  </tr>
+  <tr>
+    <td>Password</td>
+    <td><input type="password" name="password" id="password" data-ng-model="password"/></td>
+  </tr>
+  
+    
+</table><br/>
+   <button id="login" name="login" ng_click="login(userName, password)">Login</button>
+</form>
+        <p>{{loginErr}}
+        {{name}}</p>
+      </div>
+
+    <div class="login-help">
+      <p>Forgot your password? <a href="index.html">Click here to reset it</a>.</p>
+    </div>
+  </section>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html data-ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up For Beta Form</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>  
+  <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <form action="#" method="post" name="sign up for beta form"  ng-controller="RegisterController">
+      <div class="header">
+         <p>Plan B!!</p>
+      </div>
+      <div class="description">
+        <p>we dont let u fail</p>
+      </div>
+      <div class="input">
+        <input type="text" class="button" id="username" name="username" placeholder="username" data-ng-model="username" required="">
+		<button id="submit" name="searchfriend" ng_click="searchfriend(username)">Search</button>	
+      </div>
+    </form>
+  </body>
+</html>
